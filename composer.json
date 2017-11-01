@@ -14,5 +14,13 @@
     "require": {
         "illuminate/support": "~5"
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "StemateF\\LaravelConversation\\LaravelMessagesProvider"
+            ]
+
+        }
+    },
     "minimum-stability": "dev"
 }
