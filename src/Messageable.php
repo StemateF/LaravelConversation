@@ -16,7 +16,10 @@ trait Messageable
     {
         return $this->belongsToMany('StemateF\LaravelConversation\models\Conversation', 'conversation_user', 'user_id', 'conversation_id')->withTimestamps();
     }
-
+    public function conversation($conversation)
+    {
+        return $this->conversations()->where('conversation_id', $conversation);
+    }
     public function createConversation($participants)
     {
 
