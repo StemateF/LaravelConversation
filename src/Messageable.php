@@ -36,17 +36,18 @@ trait Messageable
         //FIND A BETER IMPLEMENTATION
         $conversations       = $this->conversations()->byParticipantsCount(count($participants) + 1)->get();
         $finalResult         = collect();
+        $participantsClone   = $participants;
         $participantsClone[] = $this->id;
         foreach ($conversations as $conversation) {
             $conversationMembers = $conversation->users->pluck('id')->toArray();
             $result              = array_diff($participantsClone, $conversationMembers);
+
             if (empty($result)) {
                 $finalResult->push($conversation);
             }
         }
 
         if ($finalResult->isNotEmpty()) {
-
             return $conversation;
         } else {
             return $this->createConversation($participants);
@@ -67,6 +68,6 @@ trait Messageable
     }
     public function inbox()
     {
-        return $this->conversations()->with('users')->paginate(config('conversation.max_conversation_number'));
+        return $this->conversations()->with('participants', 'lastMessage')->paginate(config('conversation.max_conversation_number'));
     }
 }
