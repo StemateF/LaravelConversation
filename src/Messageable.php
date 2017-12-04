@@ -18,7 +18,7 @@ trait Messageable
     }
     public function conversation($conversation)
     {
-        return $this->conversations()->where('conversation_id', $conversation);
+        return $this->conversations()->where('conversation_id', $conversation)->first();
     }
     public function createConversation($participants)
     {
