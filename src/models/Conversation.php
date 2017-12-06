@@ -50,5 +50,6 @@ class Conversation extends Model
         $newMessage->sender_id = request()->user()->id;
         $this->messages()->save($newMessage);
         $this->markUnseen($this);
+        return $newMessage;
     }
 }
