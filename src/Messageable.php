@@ -71,6 +71,6 @@ trait Messageable
     }
     public function inbox()
     {
-        return $this->conversations()->with('participants', 'lastMessage')->paginate(config('conversation.max_conversation_number'));
+        return $this->conversations()->with('participants', 'lastMessage')->latest()->get();
     }
 }

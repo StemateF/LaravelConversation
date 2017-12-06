@@ -20,7 +20,7 @@ class Conversation extends Model
 
     public function participants()
     {
-        debug('ssss');
+
         return $this->users()->where('user_id', '!=', request()->user()->id);
     }
 
