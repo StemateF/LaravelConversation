@@ -35,6 +35,12 @@ class Conversation extends Model
         return $query;
     }
 
+    public function scopeUnseen($query)
+    {
+        $query->where('is_seen', 0);
+        return $query;
+    }
+
     public function markUnseen($sender)
     {
         //find beter implementation ???
