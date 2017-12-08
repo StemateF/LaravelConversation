@@ -14,7 +14,7 @@ trait Messageable
 
     public function conversations()
     {
-        return $this->belongsToMany('StemateF\LaravelConversation\models\Conversation', 'conversation_user', 'user_id', 'conversation_id')->withTimestamps();
+        return $this->belongsToMany('StemateF\LaravelConversation\models\Conversation', 'conversation_user', 'user_id', 'conversation_id')->withTimestamps()->withPivot('seen_at');
     }
     public function conversation($conversation)
     {
