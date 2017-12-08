@@ -58,7 +58,7 @@ trait Messageable
     }
     public function markSeen($conversation)
     {
-        $this->conversations()->updateExistingPivot($conversation, ['is_seen' => 1]);
+        $this->conversations()->updateExistingPivot($conversation, ['is_seen' => 1, 'seen_at' => now()]);
     }
 
     public function send(Conversation $conversation, $message)

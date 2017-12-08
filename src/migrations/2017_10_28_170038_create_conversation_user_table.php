@@ -17,6 +17,7 @@ class CreateConversationUserTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->integer('is_seen')->unsigned()->default('0');
+            $table->timestamp('seen_at')->nullable();
             $table->integer('conversation_id')->unsigned();
             $table->foreign('conversation_id')->references('id')->on('conversations')->onDelete('cascade');
             $table->integer('user_id')->unsigned();
