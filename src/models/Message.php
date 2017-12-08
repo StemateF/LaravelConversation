@@ -15,4 +15,8 @@ class Message extends Model
     {
         return $this->belongsTo('App\User', 'sender_id');
     }
+    public function scopeUnseen($seenDate)
+    {
+        return $query->whereDate('created_at', $seenDate);
+    }
 }
