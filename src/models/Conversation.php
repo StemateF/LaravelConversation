@@ -21,7 +21,7 @@ class Conversation extends Model
     public function participants()
     {
 
-        return $this->users()->where('user_id', '!=', request()->user()->id)->pluck();
+        return $this->users()->where('user_id', '!=', request()->user()->id);
     }
 
     public function users()
