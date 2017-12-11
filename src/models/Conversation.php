@@ -46,7 +46,7 @@ class Conversation extends Model
         //find beter implementation ???
         DB::table('conversation_user')
             ->where('conversation_id', $this->id)
-            ->where('user_id', '!=', $sender->id)
+            ->where('user_id', '!=', $sender)
             ->update(['is_seen' => 0]);
     }
     public function send($message)
