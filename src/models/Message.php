@@ -7,6 +7,8 @@ use StemateF\LaravelConversation\models\Conversation;
 
 class Message extends Model
 {
+
+    protected $touches = ['conversation'];
     public function conversation()
     {
         return $this->belongsTo(Conversation::class, 'conversation_id');
