@@ -9,6 +9,7 @@ class Message extends Model
 {
 
     protected $touches = ['conversation'];
+
     public function conversation()
     {
         return $this->belongsTo(Conversation::class, 'conversation_id');
@@ -19,6 +20,6 @@ class Message extends Model
     }
     public function scopeUnseen($query, $seenDate)
     {
-        return $query->whereDate('created_at', $seenDate);
+        return $query->whereBetween('created_at', [$seenDate, now()]);
     }
 }
